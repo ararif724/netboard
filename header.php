@@ -26,6 +26,9 @@
                         <li class="nav-item">
                             <a class="nav-link <?php addActiveClass('firewall.php'); ?>" href="firewall.php">Firewall</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link <?php addActiveClass('device-dashboard.php'); ?>" href="device-dashboard.php">Device Dashboard</a>
+                        </li>
                     </ul>
                 </div>
             </div>
