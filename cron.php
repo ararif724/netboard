@@ -23,3 +23,9 @@ if ($stmt->num_rows > 0) {
 }
 
 $stmt->close();
+
+if (date('H') == 8 && date('i') == 0) {
+    $stmt = $db->prepare('update `devices` set `full_access_used_today` = 0');
+    $stmt->execute();
+    $stmt->close();
+}
