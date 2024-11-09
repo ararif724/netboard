@@ -13,7 +13,11 @@ $stmt->store_result();
 
 if ($stmt->num_rows > 0) {
     while ($stmt->fetch()) {
-        updateAccessType($deviceId, $nextAccessType, $nextAccessType == 'blocked' ? 1 : 0);
+        $updateStmt = $db->prepare('update `devices` set `access_type` = ? where `id` = ?');
+        $updateStmt->bind_param('si', $nextAccessType, $deviceId);
+        $updateStmt->execute();
+        $updateStmt->close();
+
         $updateStmt = $db->prepare('update `access_queue` set `status` = "completed", `updated_at` = now() where `id` = ?');
         $updateStmt->bind_param('i', $id);
         $updateStmt->execute();
